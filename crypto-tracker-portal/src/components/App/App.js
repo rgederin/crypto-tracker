@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import coingecko from '../api/coingecko';
+import coingecko from '../../api/coingecko';
 import './App.css';
-import Coin from './Coin';
+import CoinsList from '../CoinList/CoinList';
 
 const App = () => {
   const [coins, setCoins] = useState([]);
@@ -22,7 +22,6 @@ const App = () => {
 
   const filteredCoins = coins.filter(coin => coin.name.toLowerCase().includes(search.toLowerCase()))
 
-  console.log(coins);
   return (
     <div className="coin-app">
       <div className="coin-search">
@@ -31,20 +30,7 @@ const App = () => {
           <input type="text" placeholder="Search" className="coin-input" onChange={handleChange} />
         </form>
       </div>
-      {filteredCoins.map(coin => {
-        return (
-          <Coin
-            key={coin.id}
-            name={coin.name}
-            image={coin.image}
-            symbol={coin.symbol}
-            marketcap={coin.market_cap}
-            price={coin.current_price}
-            priceChange={coin.price_change_percentage_24h}
-            volume={coin.total_volume}
-          />
-        );
-      })}
+      <CoinsList coins={filteredCoins} />
     </div>
   );
 };
