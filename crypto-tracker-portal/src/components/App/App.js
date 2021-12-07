@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import coingecko from '../../api/coingecko';
 import './App.css';
 import CoinsList from '../CoinList/CoinList';
+import SearchBar from '../SearchBar/SearchBar';
 
 const App = () => {
   const [coins, setCoins] = useState([]);
@@ -24,12 +25,7 @@ const App = () => {
 
   return (
     <div className="coin-app">
-      <div className="coin-search">
-        <h1 className="coin-text">Search a currency</h1>
-        <form>
-          <input type="text" placeholder="Search" className="coin-input" onChange={handleChange} />
-        </form>
-      </div>
+      <SearchBar handleChange={handleChange} />
       <CoinsList coins={filteredCoins} />
     </div>
   );
