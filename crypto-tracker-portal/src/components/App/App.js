@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import coingecko from '../../api/coingecko';
 import './App.css';
-import CoinsList from '../CoinList/CoinList';
+import CoinsList from '../CoinsList/CoinsList';
 import SearchBar from '../SearchBar/SearchBar';
 
 const App = () => {
